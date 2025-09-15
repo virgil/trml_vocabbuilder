@@ -1,0 +1,52 @@
+<div class="view view--half-horizontal" style="display: flex; flex-direction: column; height: 100%;">
+
+    {% if word %}
+
+      <div style="display: flex; flex-direction: column; flex-grow: 1; padding: 0.5em;">
+
+        <div style="display: flex; flex-direction: row; align-items: center; margin-bottom: 0.5em;">
+            <div style="flex: 1; text-align: center;">
+                <span class="value">{{ word | escape }}</span>
+                {% if partOfSpeech %}
+                <span class="label label--small" style="display: block; font-style: italic;">({{ partOfSpeech | escape }})</span>
+                {% endif %}
+            </div>
+            
+            {% if meaning %}
+            <div style="flex: 2; padding-left: 1em;">
+                <span class="label" style="display: block; text-align: left; line-height: 1.1;">Meaning</span>
+                <span style="display: block; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; text-align: left; line-height: 1.2;">
+                  {{ meaning | escape }}
+                </span>
+            </div>
+            {% endif %}
+        </div>
+
+        {% if example %}
+        <div style="flex-grow: 1; display: flex; flex-direction: column;">
+            <div>
+                <span class="label" style="display: block; text-align: left; line-height: 1.1;">Example</span>
+                <span style="display: block; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; text-align: left; font-style: italic; line-height: 1.2;">
+                  {{ example | escape }}
+                </span>
+            </div>
+            <div style="flex-grow: 1;"></div>
+        </div>
+        {% endif %}
+
+      </div>
+
+    {% else %}
+      <div style="padding: 20px; text-align: center; font-style: italic; flex-grow: 1;">
+         Word of the Day data is currently unavailable.
+      </div>
+    {% endif %}
+
+
+    <div class="title_bar">
+      <img class="image" src="{{ trmnl.plugin_settings.icon_url | default: 'https://placehold.co/24x24/000000/FFFFFF/png?text=W' }}" alt="" />
+      <span class="title">{{ trmnl.plugin_settings.instance_name | default: "Word of the Day" | escape }}</span>
+      <span class="instance">{{ date | escape }}</span>
+    </div>
+
+</div>

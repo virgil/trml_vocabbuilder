@@ -1,0 +1,47 @@
+<div class="view view--quadrant" style="display: flex; flex-direction: column; height: 100%;">
+
+    {% if word %}
+
+      <div style="display: flex; flex-direction: column; flex-grow: 1; padding: 0.3em;">
+
+        <div style="text-align: center; margin-bottom: 0.3em;">
+            <span class="value value--small">{{ word | escape }}</span>
+            {% if partOfSpeech %}
+            <span class="label label--xsmall" style="display: block; font-style: italic; margin-top: 0;">({{ partOfSpeech | escape }})</span>
+            {% endif %}
+        </div>
+
+        {% if meaning %}
+        <div style="margin-bottom: 0.3em;">
+            <span class="label label--xsmall" style="display: block; text-align: left; line-height: 1;">Meaning</span>
+            <span style="display: block; font-size: 0.8em; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; text-align: left; line-height: 1.1;">
+              {{ meaning | escape }}
+            </span>
+        </div>
+        {% endif %}
+
+        {% if example %}
+        <div style="flex-grow: 1; display: flex; flex-direction: column;">
+            <span class="label label--xsmall" style="display: block; text-align: left; line-height: 1;">Example</span>
+            <span style="display: block; font-size: 0.8em; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; text-align: left; font-style: italic; line-height: 1.1;">
+              {{ example | escape }}
+            </span>
+            <div style="flex-grow: 1;"></div>
+        </div>
+        {% endif %}
+
+      </div>
+
+    {% else %}
+      <div style="padding: 0.5em; text-align: center; font-style: italic; font-size: 0.8em; flex-grow: 1;">
+         Word data unavailable.
+      </div>
+    {% endif %}
+
+    <div class="title_bar">
+      <img class="image" src="{{ trmnl.plugin_settings.icon_url | default: 'https://placehold.co/24x24/000000/FFFFFF/png?text=W' }}" alt="" />
+      <span class="title">{{ trmnl.plugin_settings.instance_name | default: "Word of the Day" | escape }}</span>
+      <span class="instance">{{ date | escape }}</span>
+    </div>
+
+</div>
