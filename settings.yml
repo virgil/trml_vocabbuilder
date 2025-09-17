@@ -13,7 +13,7 @@ custom_fields:
   name: Custom Vocab Builder
   field_type: author_bio
   description: Polished vocabulary builder
-  github_url: https://github.com/virgil
+  github_url: https://github.com/virgil/trml_vocabbuilder/
   email_address: trmnl@virgil.gr
 - keyname: daily_or_random
   field_type: select
